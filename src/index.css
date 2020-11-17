@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
 /*font-family: 'Montserrat', sans-serif;*/
 
+
+/* Universals */
 *, ::before, ::after{
   box-sizing: border-box;
 }
@@ -19,21 +21,15 @@ body {
   width: 90%;
 }
 
+a{
+  text-decoration: none;
+}
+
+
+/* Header */
 .header{
   display: flex;
   justify-content: space-between;
-}
-
-a{
-  text-decoration: none;
-  color: #212121;
-}
-
-a:hover{
-  color: #0170FE;
-}
-
-.header{
   padding: 15px 0px;
 }
 
@@ -45,8 +41,159 @@ a:hover{
   padding-top: 7px;
 }
 
+.navigation .profile{
+  width: 40px;
+  height: 40px;
+  padding-top: 8px;
+  padding-left: 13.5px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background-color: #0170FE;
+  color: #FFF;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .navigation a{
   margin-left: 20px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+  color: #212121;
 }
+
+.navigation a:hover{
+  color: #0170FE;
+}
+
+/* Landing Page */
+.landing-page{
+  margin: 100px auto;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero-left{
+  margin-top: 50px;
+}
+
+.hero-left h1{
+  color: #212121;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8em;
+}
+
+.hero-left p{
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.hero-left a{
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0170FE;
+  color: #FFF;
+  padding: 10px 20px 12px 20px;
+  border-radius: 4px;
+  box-shadow: -3px -3px 6px rgba(255,255,255,0.05),
+                3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.hero-left a:active{
+  box-shadow: inset -3px -3px 6px rgba(255,255,255,0.05),
+              inset  3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.hero-right img{
+  width: 500px;
+}
+
+
+/* SignIn */
+.signin{
+  width: 350px;
+  margin: 50px auto;
+}
+
+.signin h2{
+  text-align: center;
+  color: #212121;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.signin small{
+  color: #FF0000;
+  margin: 10px auto;
+}
+
+.signin-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.signin-form label{
+  padding-bottom: 5px;
+}
+
+.signin-form input{
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  font-family: 'Roboto', 'sans-serif';
+  font-size: 1em;
+  border: 1px solid #AAA;
+  border-radius: 4px;
+}
+
+
+
+
+/* Footer */
+.footer{
+  background-color: #121212;
+  padding: 10px 40px 20px 40px;
+  text-align: center;
+}
+
+.footer img{
+  width: 100px;
+  margin-top: 10px;
+}
+
+.footer small{
+  color: rgb(145, 145, 145);
+  line-height: 1.6em;
+}
+
+.footer-social-media{
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.twitter, .github, .linkedin, .insta {
+  font-size: 1.4em;
+  padding: 3.5px;
+  margin-right: 10px;
+  border-radius: 2px;
+}
+
+.github{
+  background-color: #F4F4F4;
+  color: #212121;
+}
+
+.twitter{
+  background-color: #00ACEE;
+  color: #FFF;
+}
+
+.linkedin{
+  background-color: #0E76A8;
+  color: #FFF;
+}
+
+.insta{
+  background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+  background-color: #bc318f;
+  color: #FFF;
+}
+

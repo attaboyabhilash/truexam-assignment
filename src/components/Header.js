@@ -1,15 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Logo from '../assets/truexam-logo.svg'
 
 function Header() {
+    const location = useLocation()
     return (
         <div className="container">
             <div className="header">
                 <Link to="/"><img src={Logo} alt="truexam-logo" /></Link>
                 <div className="navigation">
-                    <Link to="/signin">SignIn</Link>
-                    <Link to="/signup">SignUp</Link>
+                    {location.pathname === "/signin" ?  
+                        <Link to="/signup">SignUp</Link>
+                        :
+                        location.pathname === "/dashboard" ?
+                            <div className="profile">N</div>
+                            :
+                            <Link to="/signin">SignIn</Link>
+                    }
                 </div>
             </div>
         </div>
