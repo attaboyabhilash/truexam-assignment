@@ -44,14 +44,45 @@ a{
 .navigation .profile{
   width: 40px;
   height: 40px;
-  padding-top: 8px;
-  padding-left: 13.5px;
+  text-align: center;
   margin-top: -7px;
   border-radius: 50%;
   background-color: #0170FE;
   color: #FFF;
   font-weight: bold;
   cursor: pointer;
+}
+
+.navigation .profile p{
+  margin: 0px;
+  padding-top: 8px;
+}
+
+.navigation .profile .person{
+  color: #F4F4F4;
+  margin-top: 12px;
+}
+
+.profile .tooltip{
+  position: relative;
+  background-color: #333;
+  padding: 20px 0px;
+  border-radius: 4px;
+  width: 100px;
+  top: 12px;
+  right: 60px;
+  display: none;
+}
+
+.profile .tooltip span{
+  color: #F4F4F4;
+  font-weight: 500;
+  font-size: 0.9em;
+  margin-left: -1px;
+}
+
+.profile:hover .tooltip{
+  display: block;
 }
 
 .navigation a{
@@ -67,7 +98,7 @@ a{
 
 /* Landing Page */
 .landing-page{
-  margin: 100px auto;
+  margin: 100px auto 200px auto;
   width: 75%;
   display: flex;
   justify-content: space-between;
@@ -112,7 +143,7 @@ a{
 /* SignIn */
 .signin{
   width: 350px;
-  margin: 50px auto;
+  margin: 50px auto 200px auto;
 }
 
 .signin h2{
@@ -140,9 +171,117 @@ a{
   padding: 5px 10px;
   font-family: 'Roboto', 'sans-serif';
   font-size: 1em;
+  outline-color: #0170FE;
   border: 1px solid #AAA;
   border-radius: 4px;
 }
+
+.signin-form input[type="submit"]{
+  width: fit-content;
+  margin: 30px auto;
+  padding: 8px 20px 10px 20px;
+  font-size: 1em;
+  font-family: 'Roboto', 'sans-serif';
+  background-color: #0170FE;
+  outline: none;
+  color: #F4F4F4;
+  cursor: pointer;
+  border: none;
+  box-shadow: -3px -3px 6px rgba(255,255,255,0.05),
+                3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.signin-form input[type="submit"]:active{
+  box-shadow: inset -3px -3px 6px rgba(255,255,255,0.05),
+              inset  3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.signin-form input[type="submit"]:disabled{
+  background-color: #3387f5;
+  color: #DDD;
+}
+
+.signin-form p{
+  text-align: center;
+}
+
+.signin-form p a{
+  color: #0170FE;
+  font-weight: 600;
+}
+
+/* SignUp */
+.signup{
+  width: 350px;
+  margin: 50px auto 200px auto;
+}
+
+.signup h2{
+  text-align: center;
+  color: #212121;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.signup small{
+  color: #FF0000;
+  margin: 10px auto;
+}
+
+.signup-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form label{
+  padding-bottom: 5px;
+}
+
+.signup-form input{
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  font-family: 'Roboto', 'sans-serif';
+  font-size: 1em;
+  outline-color: #0170FE;
+  border: 1px solid #AAA;
+  border-radius: 4px;
+}
+
+.signup-form input[type="submit"]{
+  width: fit-content;
+  margin: 30px auto;
+  padding: 8px 20px 10px 20px;
+  font-size: 1em;
+  font-family: 'Roboto', 'sans-serif';
+  background-color: #0170FE;
+  outline: none;
+  color: #F4F4F4;
+  cursor: pointer;
+  border: none;
+  box-shadow: -3px -3px 6px rgba(255,255,255,0.05),
+                3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.signup-form input[type="submit"]:active{
+  box-shadow: inset -3px -3px 6px rgba(255,255,255,0.05),
+              inset  3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.signup-form input[type="submit"]:disabled{
+  background-color: #3387f5;
+  color: #DDD;
+}
+
+.signup-form p{
+  text-align: center;
+}
+
+.signup-form p a{
+  color: #0170FE;
+  font-weight: 600;
+}
+
+
+/* Dashboard */
 
 
 
@@ -197,3 +336,26 @@ a{
   color: #FFF;
 }
 
+
+
+
+@media only screen and (max-width: 700px) {
+  .landing-page{
+    width: 80%;
+    display: block;
+    text-align: center;
+  }
+
+  .hero-right{
+    margin-top: 70px;
+  }
+
+  .hero-right img{
+    width: 250px;
+  }
+
+  .signin, .signup{
+    width: 80%;
+    margin: 50px auto 200px auto;
+  }
+}

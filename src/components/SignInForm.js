@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { FirebaseContext } from '../contexts/FirebaseContext';
 
 function SignInForm() {
@@ -35,6 +35,7 @@ function SignInForm() {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" value={password} placeholder="*********" onChange={e => setPassword(e.target.value)} />
                 <input type="submit" value="SignIn" disabled={isInvalid} />
+                <p>New to TruExam? <Link to="/signup">Signup now.</Link></p>
             </form>
         </div>
     )

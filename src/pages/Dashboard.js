@@ -1,11 +1,11 @@
 import React from 'react'
 import Footer from '../components/Footer'
-import Header from '../components/Header'
+import HeaderDash from '../components/HeaderDash'
 
 function Dashboard() {
     return (
         <div>
-            <Header />
+            <HeaderDash />
             <h1>DashBoard</h1>
             <Footer />
         </div>
