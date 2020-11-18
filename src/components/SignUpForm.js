@@ -20,7 +20,7 @@ function SignUpForm() {
             .then((result) =>
                 result.user
                 .updateProfile({
-                    displayName: firstName
+                    displayName: firstName.toLowerCase()
                 })
                 .then(() => {
                     history.push('/dashboard');
