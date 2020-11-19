@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { FirebaseContext } from '../contexts/FirebaseContext'
 import { MdDelete } from 'react-icons/md'
 
@@ -44,10 +45,10 @@ function OutputTasks({name}) {
                 :
                 tasks && tasks.map(task => {
                     return(
-                        <div key={task.id} className="task">
+                        <Link to={`/dashboard/${task.id}`} key={task.id} className="task">
                             <p>{task.taskTitle}</p>
                             <MdDelete className="delete" onClick={() => handleDelete(task.id)}/>
-                        </div>
+                        </Link>
                     )
                 })
             }

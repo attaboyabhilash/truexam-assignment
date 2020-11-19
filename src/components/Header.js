@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from '../assets/truexam-logo.svg'
+import { BsPersonFill } from "react-icons/bs"
 
 
 function Header() {
@@ -13,6 +14,11 @@ function Header() {
                 <div className="navigation">
                     {location.pathname === "/signin" ?  
                         <Link to="/signup">SignUp</Link>
+                        :
+                        location.pathname === "/dashboard" ?
+                        <div className="profile">
+                            <BsPersonFill className="person" />
+                        </div>
                         :
                         <Link to="/signin">SignIn</Link>
                     }
