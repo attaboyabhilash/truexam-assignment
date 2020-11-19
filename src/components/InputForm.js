@@ -3,11 +3,13 @@ import { useHistory } from 'react-router-dom'
 import useAuthListener from '../hooks/useAuthListener';
 import { v4 as uuidv4 } from 'uuid' //uuidv4()
 import { FirebaseContext } from '../contexts/FirebaseContext'
+import { GlobalContext } from '../contexts/GlobalContext'
 import { seedDatabase } from '../helper/seed'
 
 function InputForm() {
     const fileRef = useRef()
     const { db, storage } = useContext(FirebaseContext)
+    const { handleUpdate } = useContext(GlobalContext)
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [image, setImage] = useState(null)
@@ -83,6 +85,7 @@ function InputForm() {
         setImage("")
         setImageUrl("")
         setSuccess("")
+        handleUpdate()
         fileRef.current.value = ""
         seedDatabase(para)
         history.push("/dashboard")

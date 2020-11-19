@@ -11,6 +11,7 @@ function LeftDashboard() {
     const { user } = useAuthListener()
     const inputRef = useRef(null)
     const menuRef = useRef(null)
+
     const handleClick = () => {
         if(inputRef.current.style.display === "block"){
             inputRef.current.style.display = "none"
@@ -44,7 +45,7 @@ function LeftDashboard() {
             <div ref={inputRef} className="dash-input">
                 <InputForm />
             </div>
-            <OutputTasks name={user.displayName && user.displayName} />
+            <OutputTasks name={user && user.displayName} />
         </div>
     )
 }

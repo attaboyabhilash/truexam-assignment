@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FirebaseContext } from '../contexts/FirebaseContext'
+import { GlobalContext } from '../contexts/GlobalContext'
 import OutputTaskSlide from './OutputTaskSlide'
 
 function OutputTasks({name}) {
     const { db } = useContext(FirebaseContext)
-    const history = useHistory()
     const [tasks, setTasks] = useState([])
+    const { update } = useContext(GlobalContext)
+
     const [loading, setLoading] = useState(false)
 
     const reference =  db.collection('tasks').where("createdBy", "==", `${name}`).orderBy('createdAt')
@@ -25,11 +27,8 @@ function OutputTasks({name}) {
 
     useEffect(() => {
         getTasks()
-        return () => {
-            history.push('/dashboard')
-        }
     },// eslint-disable-next-line
-    [])
+    [update])
 
     return (
         <div className="output-tasks">

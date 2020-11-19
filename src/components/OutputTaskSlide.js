@@ -23,9 +23,6 @@ function OutputTaskSlide({ task }) {
 
     useEffect(() => {
         getTasks()
-        return () => {
-            history.push('/dashboard')
-        }
     },// eslint-disable-next-line
     [])
 
@@ -40,9 +37,13 @@ function OutputTaskSlide({ task }) {
                 db.collection('studentTasks')
                     .doc(ids)
                     .delete()
+                    .then(() => {
+                        history.push('/dashboard')
+                    })
                     .catch(err => console.error(err))
                 )
-        })   
+        })
+        
     }
 
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { FirebaseContext } from '../contexts/FirebaseContext'
+import BackCard from './BackCard'
 
 function StudentTasks({ id }) {
     const { db } = useContext(FirebaseContext)
@@ -13,7 +14,10 @@ function StudentTasks({ id }) {
         reference.onSnapshot(snapshot => {
             const data = []
             snapshot.forEach(doc => {
-                data.push(doc.data())
+                data.push({
+                    data: doc.data(),
+                    dataid: doc.id
+                })
             })
             setStudentTasks(data)
             setLoading(false)
@@ -25,6 +29,7 @@ function StudentTasks({ id }) {
     },// eslint-disable-next-line
     [])
 
+
     return (
         <div className="student-tasks">
             {loading ? 
@@ -32,10 +37,13 @@ function StudentTasks({ id }) {
                 : 
                 studentTasks.map(stask => {
                     return (
-                        <div key={stask.id} className="student-tasks-card">
-                            <h4>{stask.name}</h4>
-                            <img src={stask.image} alt={stask.task} />
-                            <span>{stask.score}</span>
+                        <div key={Math.random()} className="student-tasks-card">
+                            <h4>{stask.data.name}</h4>
+                            <img src={stask.data.image} alt={stask.data.task} />
+                            <p>Score - {stask.data.score}/10</p>    
+                            <div className="down">
+                                <BackCard task={stask} />
+                            </div>
                         </div>
                     )
                 })}

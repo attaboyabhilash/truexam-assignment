@@ -17,7 +17,7 @@ function Header() {
                     {location.pathname === "/signin" ?  
                         <Link to="/signup">SignUp</Link>
                         :
-                        location.pathname === "/dashboard" || location.pathname ?
+                        location.pathname === "/dashboard" && location.pathname !== "/signin" && location.pathname !== "/signup" ?
                         <div className="profile">
                             {user && user.displayName ? <p>{user.displayName.charAt(0).toUpperCase()}</p> : <BsPersonFill className="person" />}
                         </div>
