@@ -267,7 +267,7 @@ a{
 
 .dashboard .dash-left{
   width: 325px;
-  height: 650px;
+  min-height: 650px;
   padding: 10px;
   text-align: center;
   background-color: #2c3e50;
@@ -429,6 +429,11 @@ a{
                 3px 3px 6px rgba(0,0,0,0.5);
 }
 
+.input-form input[type="submit"]:disabled{
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 .input-form input[type="submit"]:active, .handle-upload:active{
   box-shadow: inset -3px -3px 6px rgba(255,255,255,0.05),
               inset  3px 3px 6px rgba(0,0,0,0.5);
@@ -481,8 +486,6 @@ a{
   background-color: #AAA;
 }
 
-
-
 .dashboard .dash-right{
   padding: 10px;
   width: 80%;
@@ -500,6 +503,70 @@ a{
 .placeholder-text h1, .placeholder-text p{
   margin: 0px;
   color: #AAA;
+}
+
+.dashboard .task-dashboard{
+  padding: 75px 20px 20px 20px;
+  width: 80%;
+  background-color:#ecf0f1;
+  color: #333;
+}
+
+.task-dashboard .task-details{
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-dashboard .task-details .task-details-card{
+  width: 300px;
+  height: fit-content;
+  margin: auto;
+  margin-bottom: 40px;
+  background-color: #FFF;
+  padding: 20px;
+  box-shadow: -3px -3px 6px rgba(255,255,255,0.05),
+                3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.task-details .task-details-card h3{
+  margin: 0px;
+}
+
+.task-details .task-details-card img{
+  width: 260px;
+  height: 260px;
+}
+
+.task-details .student-tasks{
+  width: 65%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin: 0px auto 50px auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+}
+
+.student-tasks .student-tasks-card{
+  width: 185px;
+  height: fit-content;
+  background-color: #FFF;
+  overflow: hidden;
+  border-radius: 5px;
+  margin: auto;
+  position: relative;
+  padding: 10px;
+  box-shadow: -3px -3px 6px rgba(255,255,255,0.05),
+                3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.student-tasks .student-tasks-card h4{
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+
+.student-tasks .student-tasks-card img{
+  width: 165px;
 }
 
 
@@ -594,9 +661,18 @@ a{
     display: block;
   }
 
+  .dashboard .task-dashboard{
+    width: 100%;
+  }
+
   .dashboard .dash-right{
     width: 100%;
-    height: 750px;
+    min-height: 750px;
     position: relative;
   }
+
+  .task-dashboard .task-details{
+    display: block;
+  }
+
 }

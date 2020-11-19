@@ -2,11 +2,13 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from '../assets/truexam-logo.svg'
 import { BsPersonFill } from "react-icons/bs"
+import useAuthListener from '../hooks/useAuthListener'
 
 
 function Header() {
     const location = useLocation()
-   
+    const { user } = useAuthListener()
+
     return (
         <div className="container">
             <div className="header">
@@ -15,9 +17,9 @@ function Header() {
                     {location.pathname === "/signin" ?  
                         <Link to="/signup">SignUp</Link>
                         :
-                        location.pathname === "/dashboard" ?
+                        location.pathname === "/dashboard" || location.pathname ?
                         <div className="profile">
-                            <BsPersonFill className="person" />
+                            {user && user.displayName ? <p>{user.displayName.charAt(0).toUpperCase()}</p> : <BsPersonFill className="person" />}
                         </div>
                         :
                         <Link to="/signin">SignIn</Link>

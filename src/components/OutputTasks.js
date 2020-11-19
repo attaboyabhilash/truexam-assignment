@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { FirebaseContext } from '../contexts/FirebaseContext'
-import { MdDelete } from 'react-icons/md'
+import OutputTaskSlide from './OutputTaskSlide'
 
 function OutputTasks({name}) {
     const { db } = useContext(FirebaseContext)
+    const history = useHistory()
     const [tasks, setTasks] = useState([])
     const [loading, setLoading] = useState(false)
 
@@ -24,16 +25,11 @@ function OutputTasks({name}) {
 
     useEffect(() => {
         getTasks()
+        return () => {
+            history.push('/dashboard')
+        }
     },// eslint-disable-next-line
     [])
-    
-    const handleDelete = (id) => {
-        db.collection('tasks')
-            .doc(id)
-            .delete()
-            .catch(err => console.error(err))
-    }
-
 
     return (
         <div className="output-tasks">
@@ -45,9 +41,8 @@ function OutputTasks({name}) {
                 :
                 tasks && tasks.map(task => {
                     return(
-                        <Link to={`/dashboard/${task.id}`} key={task.id} className="task">
-                            <p>{task.taskTitle}</p>
-                            <MdDelete className="delete" onClick={() => handleDelete(task.id)}/>
+                        <Link to={`/dashboard/${task.id}`} key={task.id}>
+                            <OutputTaskSlide task={task} />
                         </Link>
                     )
                 })

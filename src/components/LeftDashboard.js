@@ -8,7 +8,7 @@ import useAuthListener from '../hooks/useAuthListener'
 
 function LeftDashboard() {
     const { app } = useContext(FirebaseContext)
-    const { user } = useAuthListener();
+    const { user } = useAuthListener()
     const inputRef = useRef(null)
     const menuRef = useRef(null)
     const handleClick = () => {

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import useAuthListener from '../hooks/useAuthListener';
 import { v4 as uuidv4 } from 'uuid' //uuidv4()
 import { FirebaseContext } from '../contexts/FirebaseContext'
+import { seedDatabase } from '../helper/seed'
 
 function InputForm() {
     const fileRef = useRef()
@@ -11,11 +12,13 @@ function InputForm() {
     const [description, setDescription] = useState("")
     const [image, setImage] = useState(null)
     const [imageUrl, setImageUrl] = useState("")
+    const [disabled, setDisabled] = useState(true)
     const [success, setSuccess] = useState("")
     const { user } = useAuthListener()
     const history = useHistory()
 
     const reference =  db.collection('tasks')
+    
 
     const handleImage = (e) => {
         if(e.target.files[0]){
@@ -25,6 +28,7 @@ function InputForm() {
 
     const handleUpload = () => {
         if(image !== null){
+            setDisabled(true)
             const storeRef = storage.ref(`images/${image.name}`).put(image)
             storeRef.on(
                 "state changed",
@@ -40,6 +44,7 @@ function InputForm() {
                         .then(url => {
                             setImageUrl(url)
                             setSuccess("Image uploaded successfully !!!")
+                            setDisabled(false)
                         })
                 }
             )
@@ -65,6 +70,13 @@ function InputForm() {
                 .set(newTask)
                 .catch(err => console.error(err))
         }
+
+        const para = {
+            id: newTask.id,
+            db: db, 
+            imageUrl: imageUrl, 
+            title: title
+        }
         
         setTitle("")
         setDescription("")
@@ -72,6 +84,7 @@ function InputForm() {
         setImageUrl("")
         setSuccess("")
         fileRef.current.value = ""
+        seedDatabase(para)
         history.push("/dashboard")
     }
 
@@ -87,7 +100,7 @@ function InputForm() {
                 <p>*Please upload the Image before Submitting the Task.</p>
                 <p className="success-message">{success && success}</p>
             </div>
-            <input type="submit" value="Submit Task" />
+            <input type="submit" disabled={disabled} value="Submit Task"  />
         </form>
     )
 }
